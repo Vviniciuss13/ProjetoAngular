@@ -1,5 +1,8 @@
 ion-toolbar{
   --background: rgb(2,0,36);
   --background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(75,9,121,1) 25%, rgba(0,255,231,1) 100%);
-  color: white;
+  
+  & ion-title{
+    --color: white;
+  }
 }
