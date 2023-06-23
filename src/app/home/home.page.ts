@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -6,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, CommonModule],
 })
 export class HomePage {
   
   num1:  any = '';
   operador: any = '';
   num2:  any = '';
+  resultado: any = '';
 
   select_number(event: any){
     if(this.operador == ''){
@@ -25,6 +27,8 @@ export class HomePage {
   apagar_tudo(){
     this.num1 = '';
     this.num2 = '';
+    this.operador = '';
+    this.resultado = '';
   }
 
   apagar_atual(){
@@ -44,6 +48,20 @@ export class HomePage {
   }
 
   select_operador(event: any){
-    this.operador == (event.target.innerText);
+    this.operador = (event.target.innerText);
+    console.log(this.operador);
+  }
+
+  op_resultado(){
+    console.log(this.operador);
+    if(this.operador == '*'){
+      this.resultado = +this.num1 * +this.num2;
+    }else if(this.operador == '/'){
+      this.resultado = +this.num1 / +this.num2;
+    }else if(this.operador == '+'){
+      this.resultado = +this.num1 + +this.num2;
+    }else{
+      this.resultado = +this.num1 - +this.num2;
+    }
   }
 }

@@ -18,8 +18,12 @@
       <ng-container *ngIf="this.operador !== ''">
         <ion-row class="ion-justify-content-end">
           <ion-input value={{this.num2}}></ion-input>
+          <ng-container *ngIf="this.resultado !== ''">
+            <ion-input value={{this.resultado}}></ion-input>
+          </ng-container>
         </ion-row>
       </ng-container>
+
       <ion-col class="ion-justify-content-center">
         <ion-row>
           <ion-button size="large" (click)="this.apagar_atual()">C</ion-button>
@@ -57,7 +61,7 @@
           <ion-button size="large">+/-</ion-button>
           <ion-button size="large" (click)="this.select_number($event)">0</ion-button>
           <ion-button size="large">,</ion-button>
-          <ion-button size="large">=</ion-button>
+          <ion-button size="large" (click)="this.op_resultado()">=</ion-button>
         </ion-row>
       </ion-col>
     </ion-col>
