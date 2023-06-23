@@ -10,20 +10,9 @@ import { IonicModule } from '@ionic/angular';
 })
 export class HomePage {
   
-  resultado:  number = 0;
+  resultado:  any = '';
 
-  incrementar(){
-    this.resultado++;
+  select_number(any: number){
+    
   }
-
-  decrementar(){
-    if(this.resultado > 0){
-      this.resultado--;
-    }
-  }
-
-  somar(valor1: number, valor2: number){
-    this.resultado = this.resultado + valor1 + valor2;
-  }
-
 }
