@@ -15,12 +15,25 @@ export class HomePage {
   operador: any = '';
   num2:  any = '';
   resultado: any = '';
+  click: number = 0;
 
   select_number(event: any){
+    if(this.resultado != ''){
+      this.operador == '';
+    }
+
     if(this.operador == ''){
-      this.num1 = this.num1 + (event.target.innerText);
+      this.num1 = this.num1 + +(event.target.innerText);
     }else{
-      this.num2 = this.num2 + (event.target.innerText);
+      this.num2 = this.num2 + +(event.target.innerText);
+    }
+  }
+
+  select_sinal(event: any){
+    if(this.operador == ''){
+      this.num1 = +this.num1 * -1;
+    }else{
+      this.num2 = +this.num2 * -1;
     }
   }
 
@@ -48,20 +61,45 @@ export class HomePage {
   }
 
   select_operador(event: any){
-    this.operador = (event.target.innerText);
-    console.log(this.operador);
+    if(this.num1 == ''){
+      this.num1 = '0';
+    }
+    
+    if(this.resultado != ''){
+      this.num1 = this.resultado;
+      this.resultado = '';
+      this.operador = (event.target.innerText);
+    }else{
+      this.operador = (event.target.innerText);
+    }
+    this.num2 = '';
   }
 
   op_resultado(){
-    console.log(this.operador);
     if(this.operador == '*'){
-      this.resultado = +this.num1 * +this.num2;
+      if(this.resultado != ''){
+        this.resultado = +this.resultado * +this.num2;
+      }else{
+        this.resultado = +this.num1 * +this.num2;
+      }
     }else if(this.operador == '/'){
-      this.resultado = +this.num1 / +this.num2;
+      if(this.resultado != ''){
+        this.resultado = +this.resultado / +this.num2;
+      }else{
+        this.resultado = +this.num1 / +this.num2;
+      }
     }else if(this.operador == '+'){
-      this.resultado = +this.num1 + +this.num2;
+      if(this.resultado != ''){
+        this.resultado = +this.resultado + +this.num2;
+      }else{
+        this.resultado = +this.num1 + +this.num2;
+      }
     }else{
-      this.resultado = +this.num1 - +this.num2;
+      if(this.resultado != ''){
+        this.resultado = +this.resultado - +this.num2;
+      }else{
+        this.resultado = +this.num1 - +this.num2;
+      }
     }
   }
 }
